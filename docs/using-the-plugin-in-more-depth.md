@@ -249,7 +249,7 @@ public GitRepositoryState(Properties properties)
 {
   this.tags = String.valueOf(properties.get("git.tags"));
   this.branch = String.valueOf(properties.get("git.branch"));
-  this.dirty = String.valueOf(properties.get("git.dirty"));
+  this.dirty = Boolean.parseBoolean(String.valueOf(properties.get("git.dirty")));
   this.remoteOriginUrl = String.valueOf(properties.get("git.remote.origin.url"));
 
   this.commitId = String.valueOf(properties.get("git.commit.id.full")); // OR properties.get("git.commit.id") depending on your configuration
@@ -262,14 +262,14 @@ public GitRepositoryState(Properties properties)
   this.commitMessageShort = String.valueOf(properties.get("git.commit.message.short"));
   this.commitTime = String.valueOf(properties.get("git.commit.time"));
   this.closestTagName = String.valueOf(properties.get("git.closest.tag.name"));
-  this.closestTagCommitCount = String.valueOf(properties.get("git.closest.tag.commit.count"));
+  this.closestTagCommitCount = Integer.parseInt(String.valueOf(properties.get("git.closest.tag.commit.count")));
 
   this.buildUserName = String.valueOf(properties.get("git.build.user.name"));
   this.buildUserEmail = String.valueOf(properties.get("git.build.user.email"));
   this.buildTime = String.valueOf(properties.get("git.build.time"));
   this.buildHost = String.valueOf(properties.get("git.build.host"));
   this.buildVersion = String.valueOf(properties.get("git.build.version"));
-  this.buildNumber = String.valueOf(properties.get("git.build.number"));
+  this.buildNumber = Integer.parseInt(String.valueOf(properties.get("git.build.number")));
   this.buildNumberUnique = String.valueOf(properties.get("git.build.number.unique"));
 }
 ```
